@@ -1,0 +1,16 @@
+paths:
+  query_dir: "data/query"
+  scene_dir: "data/scenes"
+  output_dir: "data/output"
+
+detector:
+  method: "sift"
+  nfeatures: 1000
+
+matcher:
+  type: "bf"
+  ratio_threshold: 0.7
+
+homography:
+  ransac_threshold: 5.0
+  min_matches: 5
