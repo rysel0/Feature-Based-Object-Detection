@@ -10,6 +10,7 @@ detector:
 matcher:
   type: "bf"
   ratio_threshold: 0.7
+  norm_type: "L2"
 
 homography:
   ransac_threshold: 5.0
