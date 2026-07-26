@@ -11,11 +11,9 @@ class PathsConfig(BaseModel):
 class DetectorConfig(BaseModel):
     method: Literal["sift", "orb", "akaze"] = "sift"
     nfeatures: int = 1000
-    contrastThreshold: float = 0.04
-    edgeThreshold: int = 10
-    sigma: float = 1.6
 
 class MatcherConfig(BaseModel):
+    norm_type: Literal["L2", "HAMMING", "HAMMING2"] = "L2"
     type: Literal["bf", "flann"] = "bf"
     ratio_threshold: float = 0.7
 
@@ -31,6 +29,6 @@ class Config(BaseModel):
 
     @classmethod
     def load(cls, config_path: str | Path):
-        with open(config_path, 'r') as f:
-            data = yaml.safe_load(f)
+        with open(config_path, 'r', encoding="utf-8") as f:
+            data = yaml.safe_load(f) or {}
         return cls(**data)
